@@ -46,8 +46,10 @@
 
 .numberSvg {
   margin-right: 4px;
+  fill: #000;
 }
 
 .nameSvg {
+  fill: #000;
   margin-right: 4px;
 }

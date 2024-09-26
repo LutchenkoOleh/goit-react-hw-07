@@ -1,11 +1,11 @@
 
 import { useDispatch, useSelector } from "react-redux";
-import { addContact, selectContacts } from "../../redux/contactsSlice";
+import { selectContacts } from "../../redux/contactsSlice";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from "yup";
 import { useId } from "react";
 import formCss from "./ContactsForm.module.css"
-
+import { addContact } from "../../redux/contactsOps";
 
 
 export default function ContactsForm() {
@@ -49,7 +49,7 @@ export default function ContactsForm() {
       return;
     }
 
-    dispatch(addContact(name, number));
+    dispatch(addContact({ name, number }));
     resetForm();
   };
 

@@ -1,7 +1,6 @@
 
-import { createSlice } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
-import { fetchContacts } from './contactsOps';
+import { fetchContacts, addContact, deleteContact } from './contactsOps';
+import { createSelector, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [],
@@ -62,6 +61,9 @@ export const selectError = state => state.contacts.error;
 export const selectFilteredContacts = createSelector(
   [selectContacts, (state) => state.filters.name],
   (contacts, filter) => {
+    if (!contacts || contacts.length === 0) {
+      return [];
+    }
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
